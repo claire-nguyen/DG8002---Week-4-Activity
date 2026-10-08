@@ -2,8 +2,8 @@
 # Run this file to check your result.  
 
 # DG8002 - F26 - Activity 4
-# Author Name: 
-# Date: 
+# Author Name: Claire Nguyen
+# Date: 06 Oct 2026
 
 # SCENARIO
 # A restauraunt wants a simple ordering system that allows customers to browse a menu, select items, and calculate their total bill.
@@ -32,6 +32,33 @@ order = []
 
 # TODO 7: Print out the subtotal of the entire order
 
+print ("MENU:")
+for item, price in menu.items():
+    print(f"{item:<8} - ${price:.2f}")
+while True:
+    item = input("What would you like to order? (Type 'Done' when finished): ")
+    if item == "Done":
+        break
+
+    if item in menu:
+        order.append(item)
+        print(f"{item} added sucessfully!") 
+    else:
+        print(f"Sorry, we don't serve {item} here. Please select an item from the menu.")
+        continue
+
+subtotal = 0.0
+
+for i in range(len(order)):
+    item_name = order[i]
+    item_price = menu[item_name]
+    subtotal += item_price
+    if i == 0:
+        print(f"Order: {item_name:<6} - {item_price:5.2f}")
+    else:
+        print(f"       {item_name:<6} - {item_price:5.2f}")
+
+print(f"TOTAL: ${subtotal:.2f}")
 
 # EXPECTED OUTPUT
 # Order: Burger - 12.00
